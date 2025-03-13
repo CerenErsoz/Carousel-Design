@@ -88,118 +88,147 @@
         const styles = `
             <style>
                 .product-carousel {
-    padding: 40px;
-    text-align: left; /* Merkezi hizalamayı kaldırıyoruz, sola yaslıyoruz */
-    position: relative;
-}
+                    padding: 40px;
+                    text-align: left;
+                    position: relative;
+                }
 
-.product-carousel h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-align: left; /* Başlık sola yaslanmış olacak */
-    padding-left: 10px;
-}
+                .product-carousel h2 {
+                    font-size: 20px;
+                    margin-bottom: 10px;
+                    text-align: left;
+                    padding-left: 10px;
+                }
 
-.carousel-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start; /* Carousel öğelerini sola yaslıyoruz */
-}
+                .carousel-wrapper {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                }
 
-.carousel-inner {
-    display: flex;
-    overflow-x: auto;
-    gap: 15px;
-    padding: 10px;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none; /* Internet Explorer 10+ için */
-    scrollbar-width: none; /* Firefox için */
-    justify-content: flex-start; /* İçerikleri sola yaslıyoruz */
-}
+                .carousel-inner {
+                    display: flex;
+                    overflow-x: auto;
+                    gap: 15px;
+                    padding: 10px;
+                    scroll-behavior: smooth;
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
+                    justify-content: flex-start;
+                }
 
-/* Scrollbar'ı gizle */
-.carousel-inner::-webkit-scrollbar {
-    display: none;
-}
+                .carousel-inner::-webkit-scrollbar {
+                    display: none;
+                }
 
-.product-item {
-    flex: 0 0 auto;
-    width: 210px;
-    text-align: left; /* Ürün içeriğini sola hizalayacağız */
-    position: relative;
-    height: 400px; /* Sabit bir yükseklik belirliyoruz */
-}
+                .product-item {
+                    flex: 0 0 auto;
+                    width: 210px;
+                    text-align: left;
+                    position: relative;
+                    height: 400px;
+                }
 
-.product-item img {
-    width: 100%;
-    border-radius: 8px;
-}
-.product-item p {
-    color: black;
-    text-decoration: none !important;
-}
+                .product-item img {
+                    width: 100%;
+                    border-radius: 8px;
+                }
 
-.product-item span {
-    color: blue;
-    text-decoration: none !important;
-    position: absolute;
-    bottom: 0; /* Fiyatı container'ın en altına yerleştirir */
-    width: 100%; /* Tam genişlikte olacak şekilde yerleştirilir */
-    text-align: left; /* Fiyatı sola hizalarız */
-}
+                .product-item p {
+                    color: black;
+                    text-decoration: none !important;
+                }
 
-/* Kalp simgesi */
-.heart {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    font-size: 24px;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease;
-}
+                .product-item span {
+                    color: blue;
+                    text-decoration: none !important;
+                    position: absolute;
+                    bottom: 0;
+                    width: 100%;
+                    text-align: left;
+                }
 
-.heart svg {
-    width: 70%;
-    height: 70%;
-    fill: none;
-    /* stroke: #d3d3d3; */
-    stroke-width: 2;
-    background-color: white;
-    border-radius: 3px;
-}
+                .heart {
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    cursor: pointer;
+                    font-size: 24px;
+                    width: 24px;
+                    height: 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    transition: transform 0.3s ease;
+                }
 
-.heart.favorite svg {
-    stroke: rgb(25, 61, 176);
-    fill: rgb(25, 61, 176);
-}
+                .heart svg {
+                    width: 70%;
+                    height: 70%;
+                    fill: none;
+                    stroke-width: 2;
+                    background-color: white;
+                    border-radius: 3px;
+                }
 
-/* Sağ ve sol oklar */
-.carousel-control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: transparent; /* Saydam arka plan */
-    color: black;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 24px;
-    z-index: 10;
-}
+                .heart.favorite svg {
+                    stroke: rgb(25, 61, 176);
+                    fill: rgb(25, 61, 176);
+                }
 
-.prev {
-    left: -35px; /* Okları sola kaydırıyoruz */
-}
+                .carousel-control {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background-color: transparent;
+                    color: black;
+                    border: none;
+                    padding: 10px;
+                    cursor: pointer;
+                    font-size: 24px;
+                    z-index: 10;
+                }
 
-.next {
-    right: -35px; /* Okları sağa kaydırıyoruz */
-}
+                .prev {
+                    left: -35px;
+                }
+
+                .next {
+                    right: -35px;
+                }
+
+                @media (max-width: 768px) {
+                    .product-item {
+                        width: 150px; /* Daha küçük ekranlar için ürün genişliği */
+                        height: 350px; /* Ürün yüksekliği daha küçük ekranlar için */
+                    }
+
+                    .carousel-control {
+                        font-size: 18px; /* Okların boyutlarını küçültüyoruz */
+                        padding: 8px;
+                    }
+
+                    .product-carousel {
+                        padding: 20px;
+                    }
+                }
+
+                @media (max-width: 480px) {
+                    .product-item {
+                        width: 120px; /* Daha da küçük ekranlar için */
+                        height: 300px;
+                    }
+
+                    .carousel-control {
+                        font-size: 16px;
+                        padding: 6px;
+                    }
+
+                    .product-carousel {
+                        padding: 10px;
+                    }
+                }
 
             </style>
         `;
