@@ -21,7 +21,6 @@
         function renderCarousel(products) {
             let container = $('<div class="product-carousel">').append('<h2>Benzer Ürünler</h2>');
 
-            // Ürünleri taşıyan bir dış div oluşturuyoruz
             let carouselWrapper = $('<div class="carousel-wrapper">');
             let carousel = $('<div class="carousel-inner">');
 
@@ -46,42 +45,43 @@
 
             carouselWrapper.append(carousel);
 
-            // Sağ ve sol oklar ekleyin
             let leftArrow = $('<button class="carousel-control prev"><</button>');
             let rightArrow = $('<button class="carousel-control next">></button>');
 
-            // Sağ ve sol okların işlevlerini tanımlayın
             leftArrow.on('click', function () {
-                carousel.scrollLeft(carousel.scrollLeft() - 200); // 200px sola kaydır
+                carousel.scrollLeft(carousel.scrollLeft() - 200); 
             });
             rightArrow.on('click', function () {
-                carousel.scrollLeft(carousel.scrollLeft() + 200); // 200px sağa kaydır
+                carousel.scrollLeft(carousel.scrollLeft() + 200); 
             });
 
-            // Okları, carouselWrapper'ın yanına ekleyin
+            
             carouselWrapper.append(leftArrow, rightArrow);
             container.append(carouselWrapper);
 
             $('.product-detail').after(container);
 
-            // Kalp ikonunun işlevselliği
+            
             $('.heart').on('click', function () {
                 let id = $(this).data('id');
                 let svgPath = $(this).find('svg path');
-
+            
                 if (favoriteProducts.includes(id)) {
                     favoriteProducts = favoriteProducts.filter(favId => favId !== id);
                     $(this).removeClass('favorite');
-                    svgPath.css('stroke', '#d3d3d3');  // Gri çizgi
+                    svgPath.css('stroke', '#d3d3d3'); 
+                    svgPath.css('fill', 'none');  
                 } else {
                     favoriteProducts.push(id);
                     $(this).addClass('favorite');
-                    svgPath.css('stroke', 'rgb(25, 61, 176)');  // Mavi çizgi
-                    svgPath.css('fill', 'rgb(25, 61, 176)'); // İçini mavi yap
+                    svgPath.css('stroke', 'rgb(25, 61, 176)'); 
+                    svgPath.css('fill', 'rgb(25, 61, 176)'); 
                 }
-
+    
                 localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoriteProducts));
             });
+            
+            
         }
 
         // Stil eklemesi
@@ -167,6 +167,7 @@
                     width: 70%;
                     height: 70%;
                     fill: none;
+                    stroke: #d3d3d3;
                     stroke-width: 2;
                     background-color: white;
                     border-radius: 3px;
@@ -200,12 +201,12 @@
 
                 @media (max-width: 768px) {
                     .product-item {
-                        width: 150px; /* Daha küçük ekranlar için ürün genişliği */
-                        height: 350px; /* Ürün yüksekliği daha küçük ekranlar için */
+                        width: 150px; 
+                        height: 350px; 
                     }
 
                     .carousel-control {
-                        font-size: 18px; /* Okların boyutlarını küçültüyoruz */
+                        font-size: 18px; 
                         padding: 8px;
                     }
 
@@ -213,23 +214,6 @@
                         padding: 20px;
                     }
                 }
-
-                @media (max-width: 480px) {
-                    .product-item {
-                        width: 120px; /* Daha da küçük ekranlar için */
-                        height: 300px;
-                    }
-
-                    .carousel-control {
-                        font-size: 16px;
-                        padding: 6px;
-                    }
-
-                    .product-carousel {
-                        padding: 10px;
-                    }
-                }
-
             </style>
         `;
         $('head').append(styles);
