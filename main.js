@@ -128,7 +128,7 @@
     width: 210px;
     text-align: left; /* Ürün içeriğini sola hizalayacağız */
     position: relative;
-    height: 420px; /* Sabit bir yükseklik belirliyoruz */
+    height: 400px; /* Sabit bir yükseklik belirliyoruz */
 }
 
 .product-item img {
@@ -138,7 +138,6 @@
 .product-item p {
     color: black;
     text-decoration: none !important;
-    margin: 0;
 }
 
 .product-item span {
